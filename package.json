@@ -21,11 +21,15 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
+    "casual": "^1.6.2",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^15.0.0",
     "graphql-tools": "^6.0.8",
+    "lodash": "^4.17.15",
     "mongoose": "^5.9.18",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "sequelize": "^5.21.12",
+    "sqlite": "^4.0.10"
   }
 }
