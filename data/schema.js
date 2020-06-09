@@ -1,7 +1,7 @@
-import makeExecutableSchema from 'graphql-tools'
-import resolver from './resolvers'
+import { makeExecutableSchema } from 'graphql-tools'
+import { resolver } from './resolvers'
 
-const typeDef = `
+const typeDefs = `
 type Employee {
         id: ID
         firstName: String
@@ -9,6 +9,12 @@ type Employee {
         emails: String
         gender: Gender
         technologies: [Technology]
+}
+
+type Department {
+    id: ID
+    name: String
+    head: String
 }
 
 type Technology {
@@ -43,6 +49,6 @@ type Mutation {
 }
 
 `
-const schema = makeExecutableSchema(typeDef, resolver)
+const schema = makeExecutableSchema({ typeDefs, resolver })
 
 export { schema }

@@ -1,4 +1,7 @@
 import mongoose, { mongo } from 'mongoose'
+import Sequelize from 'sequelize'
+import _ from 'lodash'
+import casual from 'casual'
 
 
 //Mongo Connection
@@ -27,4 +30,26 @@ const employeeSchema = new mongoose.Schema({
 
 const Employees = mongoose.model('employees', employeeSchema)
 
-export { Employees }
+// SQL
+
+const sequelize = new Sequelize('database', null, null, {
+    dialect: 'sqlite',
+    storage: './department.sqlite'
+})
+
+const Department = sequelize.define('department', {
+    name: { type: Sequelize.STRING },
+    head: { type: Sequelize.STRING }
+})
+Department.sync({ force: true }).then(() => {
+    _.times(10, (i) => {
+        Department.create({
+            // name: casual._first_name,
+            // head: casual._last_name
+            name: 'name' + i,
+            head: 'head' + i
+        })
+    })
+})
+
+export { Employees, Department }
