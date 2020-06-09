@@ -8,7 +8,7 @@ type Employee {
         lastName: String
         emails: String
         gender: Gender
-        technologies: [Technology]
+        technologies: String
 }
 
 type Department {
@@ -35,11 +35,11 @@ input TechnologyInput {
 
 input EmployeeInput {
     id: ID
-    firstName: String!
+    firstName: String
     lastName: String
     emails: String
     gender: Gender
-    technologies: [TechnologyInput]
+    technologies: String
 }
 type Query {
 getEmployee(id: ID):Employee

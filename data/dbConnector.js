@@ -1,4 +1,4 @@
-import mongoose, { mongo } from 'mongoose'
+import mongoose from 'mongoose'
 import Sequelize from 'sequelize'
 import _ from 'lodash'
 import casual from 'casual'
@@ -24,7 +24,7 @@ const employeeSchema = new mongoose.Schema({
         type: String
     },
     technologies: {
-        type: Array
+        type: String
     },
 })
 
