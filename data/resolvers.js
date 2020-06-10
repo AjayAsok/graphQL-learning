@@ -27,6 +27,22 @@ export const resolver = {
                     else resolve(newEmployee)
                 })
             })
+        },
+        updateEmployee: (root, { input }) => {
+            return new Promise((resolve, object) => {
+                Employees.findOneAndUpdate({ _id: input.id }, input, { new: true }, (err, employee) => {
+                    if (err) reject(err)
+                    else resolve(employee)
+                })
+            })
+        },
+        deleteEmployee: (root, { id }) => {
+            return new Promise((resolve, object) => {
+                Employees.remove({ _id: id }, (err) => {
+                    if (err) reject(err)
+                    else resolve("Success")
+                })
+            })
         }
     }
 }

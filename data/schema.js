@@ -46,6 +46,8 @@ getEmployee(id: ID):Employee
 }
 type Mutation {
     createEmployee(input: EmployeeInput) :Employee
+    updateEmployee(input: EmployeeInput) :Employee
+    deleteEmployee(id:ID!): String
 }
 
 `
