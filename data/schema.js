@@ -1,13 +1,20 @@
-import { buildSchema } from "graphql"
+import { makeExecutableSchema } from 'graphql-tools'
+import { resolver } from './resolvers'
 
-const schema = buildSchema(`
+const typeDefs = `
 type Employee {
         id: ID
         firstName: String
         lastName: String
         emails: String
         gender: Gender
-        technologies: [Technology]
+        technologies: String
+}
+
+type Department {
+    id: ID
+    name: String
+    head: String
 }
 
 type Technology {
@@ -28,19 +35,23 @@ input TechnologyInput {
 
 input EmployeeInput {
     id: ID
-    firstName: String!
+    firstName: String
     lastName: String
     emails: String
     gender: Gender
-    technologies: [TechnologyInput]
+    technologies: String
 }
 type Query {
-getEmployee(id: ID):Employee
+getOneEmployee(id: ID!):Employee
+getDepartment: [Department]
 }
 type Mutation {
     createEmployee(input: EmployeeInput) :Employee
+    updateEmployee(input: EmployeeInput) :Employee
+    deleteEmployee(id:ID!): String
 }
 
-`)
+`
+const schema = makeExecutableSchema({ typeDefs, resolver })
 
-export default schema
+export { schema }
