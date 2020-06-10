@@ -1,13 +1,21 @@
 import mongoose from "mongoose"
-import { Employees } from "./dbConnector"
+import { Employees, Department } from "./dbConnector"
 
 const employeeDatabase = {}
 
 //resolver map
 export const resolver = {
     Query: {
-        getEmployee: ({ id }) => {
-            return new Employee(id, employeeDatabase[id])
+        getOneEmployee: (root, { id }) => {
+            return new Promise((resolve, object) => {
+                Employees.findById(id, (err, employee) => {
+                    if (err) reject(err)
+                    else resolve(employee)
+                })
+            })
+        },
+        getDepartment: () => {
+            return Department.findAll();
         }
     },
     Mutation: {

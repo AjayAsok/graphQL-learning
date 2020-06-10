@@ -42,7 +42,8 @@ input EmployeeInput {
     technologies: String
 }
 type Query {
-getEmployee(id: ID):Employee
+getOneEmployee(id: ID!):Employee
+getDepartment: [Department]
 }
 type Mutation {
     createEmployee(input: EmployeeInput) :Employee
