@@ -22,9 +22,9 @@ export const resolver = {
             newEmployee.id = newEmployee._id
 
             return new Promise((resolve, object) => {
-                newEmployee.save((err, res) => {
+                newEmployee.save((err) => {
                     if (err) reject(err)
-                    else resolve(res)
+                    else resolve(newEmployee)
                 })
             })
         }

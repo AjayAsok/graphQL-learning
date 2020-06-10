@@ -12,7 +12,6 @@ app.get('/', (req, res) => {
 
 app.use('/graphql', graphqlHTTP({
     schema: schema,
-
     graphiql: true
 }))
 

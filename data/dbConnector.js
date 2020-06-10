@@ -6,7 +6,7 @@ import casual from 'casual'
 
 //Mongo Connection
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost/employees", {
+mongoose.connect("mongodb://localhost/employee", {
     useMongoClient: true
 })
 
@@ -28,7 +28,7 @@ const employeeSchema = new mongoose.Schema({
     },
 })
 
-const Employees = mongoose.model('employees', employeeSchema)
+const Employees = mongoose.model('employee', employeeSchema)
 
 // SQL
 
@@ -44,10 +44,10 @@ const Department = sequelize.define('department', {
 Department.sync({ force: true }).then(() => {
     _.times(10, (i) => {
         Department.create({
-            // name: casual._first_name,
-            // head: casual._last_name
-            name: 'name' + i,
-            head: 'head' + i
+            name: casual._first_name[0],
+            head: casual._last_name[0]
+            // name: 'name' + i,
+            // head: 'head' + i
         })
     })
 })
